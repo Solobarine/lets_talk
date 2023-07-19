@@ -30,15 +30,17 @@ class AuthController extends Controller
         $user = Auth::user();
 
         // Create Appropriate Response
-        $response = (!$token) ? response()->json([
-            'message' => 'Invalid Email or Password'
-        ], 401) : response()->json([
-            'user' => $user,
-            'authorization' => [
-                'token' => $token,
-                'type' => 'Bearer'
-            ]
-        ], 200);
+        $response = (!$token)
+            ? response()->json([
+                'message' => 'Invalid Email or Password'
+            ], 401)
+            : response()->json([
+                'user' => $user,
+                'authorization' => [
+                    'token' => $token,
+                    'type' => 'Bearer'
+                ]
+            ], 200);
 
         //Send Response
         return $response;
